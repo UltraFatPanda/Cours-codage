@@ -1,0 +1,75 @@
+//varibles
+$color1: pink;
+$color2: rgb(223, 162, 31);
+$color3: cyan;
+$white: rgb(241,241,241);
+$black: rgb(23,23,23);
+
+//mixines
+@mixin centerChild {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    background: $color2;
+}
+
+nav{
+    background: pink;
+border-radius: 10px;
+    ul{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 40px;
+        
+        li{
+            list-style: none;
+        }
+    }
+}
+
+header {
+    h1 {
+        font-size: 3rem;
+        text-align: center;
+        
+
+        @media screen and (max-width: 700px)
+        {
+            font-size: 0.3rem; 
+        } 
+            
+        
+
+        &::after{
+            content: "*";
+            position: absolute;
+            transform: translateY(-6px);
+            color: pink;
+            transition: 0.2s;
+        }
+        &:hover::after{
+            transform: scale(2);
+        }
+    }
+}
+
+    //@ include permet de réutiliser la mixine, cad les paramètres qu'on a spécifié avant
+
+section{
+    height: 400px;
+    border: 1px solid $black;
+    @include centerChild;
+
+
+
+    p{
+    width: 50%;
+    text-align: center;
+
+    }
+}
+

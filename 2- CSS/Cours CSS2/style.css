@@ -1,0 +1,354 @@
+:root {
+  --color1: rgb(255, 217, 199);
+  --color2: rgb(0, 16, 161);
+  --color3: black;
+  --color4: purple;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(./Background.jpg) center/cover;
+  height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--color1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* de base tout est en display block, c'est à dire on lui dit prends 100% de la largeur et le reste tu lui mets à la ligne  */
+  overflow: hidden;
+  /* permet de cacher touts les éléments qui sortent de la page, ça permet d'éviter qu'il y ai une barre de navigation qui apparaisse si jamais notre animation de vaisseau spatia lse barre en dehors de l'écran visible  */
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.363);
+  width: calc(100% - 50px);
+  /* cela permet de faire calculer la largeur par css, ne pas oublier les espaces autour du signe au milieu, ici le -  */
+  padding: 20px 20px 6px;
+  /* quand on met plusieurs éléments dans le padding c'est d'abord en haut puis gauche/droite puis en bas */
+  box-shadow: inset -1px 2px 20px 20px #0066e733;
+  border-radius: 5px;
+  /* border radisu permet d'arrondir les bords  */
+  backdrop-filter: blur(10px);
+  /* permet de flouter le fond du texte */
+}
+
+.card::before {
+  content: "\2730";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  font-size: 2.4rem;
+  /* pour augmenter taille logo, utiliser font size et utiliser rem  */
+}
+
+/* on peut aller chercher sur internet une bibliothèque de symbole html et juste copier coller le code  */
+
+h1 {
+  margin-bottom: 24px;
+  /* c'est pour détacher le texter du titre, pour une meilleure visiblité  */
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  /* on est obligé de mettre un content et une position (en absolute?) pour un before ou un after, même s'il est vide, sinon ça ne marche pas  */
+  background: var(--color1);
+  height: 1px;
+  width: 100%;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  /* pour le positionner : il est en absolute alors on doit lui mettre des frontières, cad mettre une pasition relative au parent, cad h1 ici */
+  animation: h1anim 6s ease-in-out;
+  /* ease in out veut dire un peu lent au début et un peu lent à la fin  */
+  transform-origin: left;
+  /* permet de dire que l'animation commence par la gauche  */
+}
+
+@keyframes h1anim {
+  100% {
+    transform: translateX(-50%) scaleX(1);
+    /* il faut rappeller le translateX car sinon cette dernière ligne écrase celle ou l'on défini le translate !  */
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  /* comme grid container a deux enfants, la prmière valeur est pour le premier enfant et la seconde pour le second etc  */
+}
+
+.polygon-container {
+  filter: drop-shadow(-1px 10px 3px var(--color3));
+  place-self: center left;
+  /* permet de placer l'élement car le parent est en grid, cela le place d'abord hoziontalement, ici center, puis verticalement, ici left  */
+}
+
+.polygon {
+  /* les divisions peuvent avoir la forme qu'on veut, ici on fait un polygone, il leur faut une taille et un background pour être visibles */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: linear-gradient(135deg, var(--color2) 0%, var(--color1) 100%);
+  height: 100px;
+  width: 100px;
+  /* pour lui mettre une box-shadow il faut passer par son parent, ici polygon container, si pas sur on peut aller checquer dans la console  */
+}
+
+.polygon::after {
+  content: "Un texte";
+  position: absolute;
+  color: var(--color4);
+  background: var(--color3);
+  top: 50%;
+  left: 50%;
+  /* on peut dire top et left parce que l'émément est en absolute, sauf qu'il est centré par rapport à sont coin supérieur gauche */
+  transform: translate(-50%, -50%) rotate(-45deg);
+  /* cela permet de mettre le centre de l'élément sur son centre géométrique, on peut faire roter les éléments aussi grace au translate, se servir de la console permet de jouer avec pour trouver la bonne valeur de rotation  */
+  width: 90px;
+  padding: 4px;
+  text-align: center;
+}
+
+p {
+  line-height: 26px;
+  /* permet de régler l'écartement entre les lignes du texte  */
+  margin: 20px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  /* cela permet d'afficher que 4 lignes et de cacher le reste  */
+  text-align: justify;
+  /* permet de justifier le texte, cad le mettre en un peut plus propore ? */
+}
+
+p::selection {
+  background: var(--color3);
+  /* permet de changer la couleur du background quand on selectionne le texte p sur le navigateur  */
+  /* on peut aussi changer la couleur du texte selectionné en soit avec color: var(--color1); par exemple  */
+}
+
+.checkbox-container {
+  display: flex;
+  justify-content: space-around;
+  /* cette dernière ligne permet de les étaler/écarter un peu plus */
+  margin: 20px 0 30px;
+  perspective: 40px;
+  /* on met la perspective pour notre animation  */
+}
+
+input[type="checkbox"] {
+  display: none;
+  /* permet visuellement de faire disparaitre la petite box et de juste cliquer sur le label pour checker ou pas ! on peut après mettre le label dans une autre couleur pour valider le fait qu'il est été checked  */
+}
+
+input[type="checkbox"]:checked + label {
+  /* ça pose la condition quand 'input de type checkbox est checked, le signe + prend en compte aussi le label qui suit, on peut mettre aussi le signe ~ pour désigner TOUS les labels qui suivent ' */
+  background-color: green;
+  /* ça dit que quand on check l'input, le label devient vert */
+  transform: scale(1.05);
+  /* cela permet de dire au boutton de grossir de 5% quand on clique dessus, la scale normale est de 1  */
+  filter: brightness(120%);
+  /* on peut aller chercher des filtres sur le site filter generator, ici on augmente la luminosité, celle de basse est de 100%  */
+}
+
+label {
+  cursor: pointer;
+  /* permet de montrer que l'input est cliquable en changeant l'apparence de la souris */
+  border: 1px solid var(--color1);
+  background: var(--color3);
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.2s;
+  /* il faut toujours mettre la transition sur l'élément global */
+  user-select: none;
+  /* cela permet de faire en sorte que l'utilisateur ne puisse pas sélectionner le texte du label  */
+}
+
+label:first-of-type:hover {
+  /* first of type veut dire le tout premier label  */
+  animation: label1 1s infinite linear;
+  /* infinite permet de dire que l'animation joue à l'infini et linera permet de rendre les suites d'animations un peu plus fluide  */
+}
+
+@keyframes label1 {
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+label:nth-child(4):hover {
+  /* nth child veut dire le n-ième enfant, il faut regarder dans la console le nombre d'enfant, par exemple ici le deuxième bouton est le 4e enfant du parent checkbox container  */
+  /* la on va faire un effet 3d, il ne faut absolument pas oublier la perspective sur le parent !, ici checkbox conainer  */
+  animation: label2 3s infinite linear;
+}
+
+@keyframes label2 {
+  33% {
+    transform: translateZ(30px);
+  }
+  66% {
+    transform: translateZ(-40px);
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
+.e-mail {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.e-mail input {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 3px solid transparent;
+  /* cela permet de mettre une bordure invisible pour que quand on commence à écrire et qu'il y a la bordure de la condition focus, l'iput conserve la meme taille, elle va juste passer de transparent à la couleur choisis dans la condition focus  */
+  transition: 0.3s;
+  text-align: center;
+  /* permet d'écrise au plein centre de l'input */
+  font-size: 1.1rem;
+  color: var(--color2);
+  width: 35%;
+  /* la taille dynamique en pourcentage est bonne mais par contre quand l'écran sera très grand l'iput sera énorme et pareil si écran très petit l'input sera minuscule  */
+  max-width: 300px;
+  min-width: 180px;
+  /* avec ces réglages la on met un min et un max pour que l'input reste visible peu importe la taille de l'écran */
+}
+
+input[type="text"]:focus {
+  /* met une condition quand l'utilisateur écrit dans l'input */
+  background: transparent;
+  border: 3px solid var(--color1);
+  /* par contre quand on commence à écrire l'input se deforme, et change la hauteur de toute la page, c'est pas super élégant, c'est parce que quand la border se créé elle prend 3px en haut et 3 px en bas  */
+  border-radius: 150px;
+}
+
+input[type="text"]::placeholder {
+  color: var(--color3);
+}
+
+button {
+  cursor: pointer;
+  background: var(--color1);
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 150px;
+  margin: 0 auto;
+  display: block;
+  /* le mettre en black permet de le centrer sur toute l'espace horizontal à son niveau  */
+  transition: 0.4s;
+  /* toujours pareil il faut mettre la transition dans l'élément princpal pour que la trainsition fasse effet à l'entrée et à la sortie de la souris  */
+}
+
+button:hover {
+  letter-spacing: 3px;
+}
+
+button:active {
+  /* permet de mettre une condition quand l'utilisateur clique sur le bouton  */
+  transform: scale(1.2);
+  background: green;
+}
+
+button:hover + a,
+a:hover {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.3s;
+  /* on rajoute le a:hover pour pouvoir quand même cliquer sur le lien, donc on laisse le lien apparent quand on glisse la souris dessus  */
+  visibility: visible;
+  /* permet de ne pas faire buguer quand on passe la sours sur le lien alors qu'il est invisible  */
+}
+
+a {
+  color: var(--color1);
+  text-align: center;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+}
+
+a:visited {
+  color: var(--color2);
+}
+
+img {
+  /* on peut utiliser directement la balise img car c'est la seul img de notre site  */
+  height: 100px;
+  position: absolute;
+  filter: drop-shadow(0px 6px 3px rgba(255, 255, 0, 0.6));
+  z-index: -1;
+  /* le z-index permet de mettre des éléments plus ou moins devant ou derrière, par exemple -1 le met au fond, derrière notre card mais 5 le mettrait en vue tout le temps   */
+  animation: spaceship 30s infinite linear;
+}
+
+@keyframes spaceship {
+  0% {
+    top: 2%;
+    left: 2%;
+    transform: rotate(90deg);
+  }
+  10% {
+    top: 70%;
+    left: 70%;
+    transform: rotate(90deg);
+  }
+  20% {
+    top: 2%;
+    left: 20%;
+    transform: rotate(90deg);
+  }
+  30% {
+    top: 80%;
+    left: 2%;
+    transform: rotate(90deg);
+  }
+  40% {
+    top: 20%;
+    left: 90%;
+    transform: rotate(90deg);
+  }
+  50% {
+    top: 2%;
+    left: 15%;
+    transform: rotate(90deg);
+  }
+  60% {
+    top: 90%;
+    left: 2%;
+    transform: rotate(90deg);
+  }
+  70% {
+    top: 2%;
+    left: 70%;
+    transform: rotate(90deg);
+  }
+  80% {
+    top: 85%;
+    left: 35%;
+    transform: rotate(90deg);
+  }
+  90% {
+    top: 50%;
+    left: 60%;
+    transform: rotate(90deg);
+  }
+  100% {
+    top: 2%;
+    left: 2%;
+    transform: rotate(90deg);
+    /* il faut qu'il termine au même endroit ou il a commencer pour bien faire une boucle  */
+    /* pour trouver le bon angle de rotation on peut aller dans la console, ralentir l'animation et orienter dans la console puis copier la valeur à chaque changement de direction  */
+  }
+}

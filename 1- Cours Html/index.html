@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Titre de la page -->
+    <title>Test de titre</title>
+    <!-- Icone de l'onglet -->
+    <link rel="shorcut icon" href="./Fontenay_sous_Bois_visual_identity_emblem.png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Accueil</li>
+            <li>Boutique</li>
+            <li><a href="#form">Formulaire</a>
+            </li>
+        </ul>
+    </nav>  
+    <header>
+        <h1>Ceci est le titre principal</h1>
+        <p><strong>Coucou</strong>Coucou</p>
+    </header>
+    <main>
+<section>
+<h2>Ordered List</h2>
+<ol>
+    <li>Ceci</li>
+    <li>es</li>
+    <li>liste dans l'ordre</li>
+</ol>
+</section>
+<h3>Image en html</html></h3>
+<img src="./téléchargement (5).jfif" alt="">
+<div>
+<h4>
+   <!-- Cellpading est pour écarter les cases, cellspacing pour ajouter espace entre les cases -->
+    <table border="4" cellpadding="10" cellspacing="4">
+        <!-- thead est pour l'entête du tableau -->
+        <thead>
+            <tr>
+                <th>Colonne 1</th>
+                <th>Colonne 2</th>
+                <th>Colonne 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- Rowspan permet de faire des cases plus grandes en bas et colspan en horizontal -->
+                <td rowspan="2">Cell 1</td>
+                <td>Cell 2</td>
+                <td colspan="2">Cell 3</td>
+                <td>Cell 4</td>
+                <td>Cell 5</td>
+                <td>Cell 6</td>
+            </tr>
+        </tbody>
+
+    </table>
+</h4>
+    
+</div>
+<div>
+    <h5><i>&#10148;</i> Les liens</h5>
+    <!-- i permet de mettre une icone, marche aussi avec span -->
+    <a href="https://htmlcheatsheet.com" target="_blank"> Html Cheat Sheet</a>
+    <!-- target=_blank permet de créer un nouvel onglet -->
+</div>
+<div>
+    <h6>
+       <i>&#128252;</i> Vidéos
+       <video src="./124794-732633099_small.mp4" autoplay muted
+       loop height="200"></video>
+       <!-- autoplay est necessaire pour que la video se joue automatiquement, muted pour pas de sons et loop pour jouer en boucle -->
+    </h6>
+</div>
+<section id="form">
+    <h2>Les formulaires</h2>
+    <form action=""> <!-- action veut dire ou vont les données du formulaire -->
+        <label for="name">Nom</label>
+        <input type="text" id="name" placeholder="Entrez votre nom">
+        <!-- for et id permettend de lier le label à l'input -->
+        
+        <br>
+        <!-- fait un saut à la ligne -->
+
+        <label for="age">Entrez votre âge</label>
+        <input type="number" id="age" value="18">
+
+        <!-- input de type select -->
+        <label for="gender">Genre</label>
+        <select id="gender">
+            <option value="Homme">Homme</option>
+            <option selected="selected" value="Femme">Femme</option>
+            <option value="Autre">Autre</option>
+        </select>
+
+        input de type radio
+        <div>
+            <input type="radio" name="type" id="humain" checked>
+            <label for="humain">Humain</label>
+
+            <input type="radio" name="type" id="dog">
+            <label for="dog">Chien</label>
+            
+            <input type="radio" name="type" id="cat">
+            <label for="cat">Chat</label>
+            <!-- Ils ont le même name "type" donc ils sont connecté entre eux. Cheked permet de préselectionner -->
+        </div>
+
+        <textarea placeholder="Votre message" 
+        id="" 
+        cols="30" 
+        rows="10"></textarea>
+
+        <br>
+
+        <!-- input de type checbox -->
+        <input type="checkbox" name="" id="cgv">
+        <label for="cgv">Accepter les conditions générales</label>
+<br>
+        <input type="submit" value="Appuyer pour valider">
+
+<br>
+
+        <button>Ceci est un bouton</button>
+
+    </form>  
+
+
+   <!-- on peut changer le type d'input, par ex une date -->
+</section>
+    </main>
+    <footer>
+        <!-- Mail et envoi de fichiers -->
+        <a href="mailto:monmail@gmail.com">Contactez moi</a>
+        <a href="./Notice.txt" download="Notice"> Télécharger la notice</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "i1 i1 i3"
+    "ta1 ta2 i3"
+    "ta1 ta3 ta3";
+  gap: 10px;
+}
+
+div:nth-child(1) {
+  background: yellow;
+  grid-area: i1;
+}
+div:nth-child(2) {
+  background: purple;
+  grid-area: i3;
+}
+div:nth-child(3) {
+  background: green;
+  grid-area: ta2;
+}
+div:nth-child(4) {
+  background: red;
+  grid-area: ta1;
+}
+div:nth-child(5) {
+  background: orchid;
+  grid-area: ta3;
+}

@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Saira+Condensed:wght@500&display=swap");
+
+/* De base tous les éléments sont en bloc c'est à dire qu'ils prennent toute la largeur et qu'ils renvoient à la ligne après  */
+
+* {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+  /* cette dernière ligne est casi toujours necessaire pour que tout soit bien aligné */
+}
+li {
+  list-style: none;
+  /* permet d'éviter les points qui sont crée par une li  */
+}
+p {
+  font-size: 0.8rem;
+  /* fait a chaque fois  */
+}
+body {
+  min-height: 100vh;
+  /* permet de dire que le body va occuper 100% de l'écran, c'est indispensable ?  */
+  background: rgb(29, 29, 29);
+  color: rgb(250, 250, 250);
+}
+nav {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* permet de dire : tes deux enfants tu vas les répartir à 50 50, s'il y a plusieurs enfant on faire définir plusieurs pourcentages ou alors le mettre en pixels  */
+  padding: 10px 20px;
+  /* Le padding permet de créer un espace supplémentaire à l'intérieur d'un élément. La marge (margin) permet quant à elle de créer un espace supplémentaire à l'extérieur de l'élément. */
+}
+nav ul {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.header {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 0 auto;
+  align-items: center;
+  /* auto veut dire tu centres les éléments, align item dcenter veut dire que tu centre son enfant unique  */
+}
+
+h1 {
+  font-size: 5rem;
+}
+.header-left-container h3 {
+  color: #474dff;
+  font-size: 1.8rem;
+}
+.header-right {
+  width: 50%;
+}
+#modem {
+  width: 100%;
+  margin: 0 auto;
+  /* permet de cibler directement l'id de l'image et là on lui dit de prendre 100% de la taille de son parent  */
+}
+.infos {
+  background: rgb(10, 10, 10);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 33% 67%;
+}
+
+.btn-container {
+}
+button {
+  border: none;
+  background: #474dff;
+  color: white;
+  width: 150px;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  /* met en gras  */
+  letter-spacing: 1px;
+  /* permet d'écarter les lettres  */
+  margin: 5px;
+}
+.infos-right {
+  width: 67%;
+}
+.investors {
+  display: grid;
+  align-items: center;
+  height: 80%;
+}
+.img-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.img-container img {
+  height: 60px;
+}
+
+/* ************media queries********** */
+
+/* les tablettes c'est entre 700px et 900px, regarder dans ces zones si quelque chose se déforme ou rend pas très bien  */
+
+@media screen and (max-width: 870px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .header-left-container h3 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.7rem;
+  }
+}
+
+/* on repère qu'en dessous de 592px le texte ne dessous se casse un peu car on a force une width en px  */
+
+@media screen and (max-width: 592px) {
+  nav {
+    grid-template-columns: 35% 65%;
+  }
+  nav ul {
+    font-size: 0.7rem;
+  }
+  .header {
+    display: block;
+  }
+  .info {
+    display: block;
+    text-align: center;
+  }
+  .btn-container {
+    text-align: center;
+  }
+  .img-container img {
+    height: 33px;
+  }
+  button {
+    margin: 5px auto;
+  }
+}

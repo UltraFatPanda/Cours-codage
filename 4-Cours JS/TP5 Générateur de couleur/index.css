@@ -1,0 +1,22 @@
+#colorTextContainer {
+  width: 600px;
+  height: 200px;
+  background: #464646;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+h3 {
+  color: antiquewhite;
+  font-size: 3rem;
+}

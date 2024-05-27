@@ -1,0 +1,33 @@
+body {
+  overflow: hidden;
+  /* cette ligne permet de cacher tout ce qui ne se trouve pas dans le body, ce qui permet de ne pas avoir de barre de scroll  */
+  min-height: 100vh;
+  cursor: crosshair;
+}
+.bubble {
+  position: absolute;
+  border-radius: 300px;
+  background: rgba(255, 166, 0, 0.6);
+  opacity: 0;
+  animation: anim 8s forwards;
+  /* forward veut dire tu reste dans l'état dans lequel tu étais à la fin */
+  filter: hue-rotate(0deg);
+  /* cette ligne permet de faire changer la couleur  */
+}
+
+@keyframes anim {
+  to {
+    top: -250px;
+    left: var(--left);
+    opacity: 1;
+    filter: hue-rotate(720deg);
+    /* cette ligne veut dire tu vas faire deux tours sur la roue des couleurs  */
+  }
+  /* on ne peut pas injecter du javascript dans du keyframe !!! */
+}
+h3 {
+  font-size: 10rem;
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(128, 128, 128, 0.555);
+}
