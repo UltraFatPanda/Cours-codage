@@ -10,6 +10,7 @@ const Countries = () => {
 
   // Le useEffect se joue lorsque le composant est monté
   useEffect(() => {
+    // il faut toujours utiliser un use effect pour utiliser axios ?
     axios
       .get("https://restcountries.com/v3.1/all")
       .then((res) => setData(res.data));
