@@ -33,6 +33,7 @@ const Article = ({ article }) => {
   const handleDelete = () => {
     axios.delete("http://localhost:3003/articles/" + article.id);
     window.location.reload();
+    // il faut relancer la page car sinon le message continue d'apparaitre, cela demande des outils plus avancés pour supprimer sans recharger la page ?
   };
 
   return (
