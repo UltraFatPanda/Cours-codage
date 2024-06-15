@@ -1,9 +1,20 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid salmon;
+  border-radius: 10px;
 }
 
 code {
@@ -12,7 +23,7 @@ code {
 }
 
 .App-header {
-  color: blue;
+  color: salmon;
   display: flex;
   align-items: center;
   margin-left: 50%;
@@ -20,3 +31,28 @@ code {
 input {
   margin-left: 50%;
 }
+
+.card {
+  display: block;
+}
+img {
+  height: 100px;
+  width: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+p {
+  display: flex;
+  max-height: 300px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 30px;
+} */
+/* autre façon de faire pour bien diposer les cards */
