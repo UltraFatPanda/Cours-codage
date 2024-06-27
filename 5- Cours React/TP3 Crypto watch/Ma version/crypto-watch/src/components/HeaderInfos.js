@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PercentChange from "./PercentChange";
 
 const HeaderInfos = () => {
   const [headerData, setHeaderData] = useState([]);
@@ -27,7 +28,12 @@ const HeaderInfos = () => {
         <li>Marchés : {headerData.markets && headerData.markets}</li>
       </ul>
       <ul className="infos-mkt">
-        <li className="global-mkt">Global Market Cap :</li>
+        <li className="global-mkt">
+          Global Market Cap :{" "}
+          <PercentChange
+            percent={headerData.market_cap_change_percentage_24h_usd}
+          />
+        </li>
       </ul>
     </div>
   );
