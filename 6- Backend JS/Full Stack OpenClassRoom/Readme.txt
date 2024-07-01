@@ -56,6 +56,7 @@ La méthode  Schema  de Mongoose vous permet de créer un schéma de données po
     La méthode  model  transforme ce modèle en un modèle utilisable.
 
 
+
 Les méthodes de votre modèle Thing permettent d'interagir avec la base de données :
 
     save()  – enregistre un Thing ;
@@ -65,3 +66,29 @@ Les méthodes de votre modèle Thing permettent d'interagir avec la base de donn
     findOne()  – retourne un seul Thing basé sur la fonction de comparaison qu'on lui passe (souvent pour récupérer un Thing par son identifiant unique).
 
     La méthode  app.get()  permet de réagir uniquement aux requêtes de type GET.
+
+
+
+app.put()  et  app.delete()  attribuent des middlewares aux requêtes de type PUT et de type DELETE.
+
+    Les méthodes  updateOne()  et  deleteOne()  de votre modèle Thing permettent de mettre à jour ou de supprimer un Thing dans la base de données.
+
+
+
+La méthodeexpress.Router()  vous permet de créer des routeurs séparés pour chaque route principale de votre application – vous y enregistrez ensuite les routes individuelles.
+
+    Un fichier de contrôleur exporte des méthodes qui sont ensuite attribuées aux routes pour améliorer la maintenabilité de votre application.
+
+
+bcrypt  est un package proposant une fonction de hachage que vous pouvez installer avec  npm  .
+
+    mongoose-unique-validator  améliore les messages d'erreur lors de l'enregistrement de données uniques.
+
+
+npm install bcrypt
+
+    nous appelons la fonction de hachage de bcrypt dans notre mot de passe et lui demandons de « saler » le mot de passe 10 fois. Plus la valeur est élevée, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé. Pour plus d'informations, consultez la documentation de bcrypt ;
+
+     s'agit d'une fonction asynchrone qui renvoie une Promise dans laquelle nous recevons le hash généré ;
+
+    dans notre bloc then , nous créons un utilisateur et l'enregistrons dans la base de données, en renvoyant une réponse de réussite en cas de succès, et des erreurs avec le code d'erreur en cas d'échec. 
