@@ -92,3 +92,24 @@ npm install bcrypt
      s'agit d'une fonction asynchrone qui renvoie une Promise dans laquelle nous recevons le hash généré ;
 
     dans notre bloc then , nous créons un utilisateur et l'enregistrons dans la base de données, en renvoyant une réponse de réussite en cas de succès, et des erreurs avec le code d'erreur en cas d'échec. 
+
+
+La méthode compare de bcrypt compare un string avec un hash pour, par exemple, vérifier si un mot de passe entré par l'utilisateur correspond à un hash sécurisé enregistré en base de données. Cela montre que même bcrypt ne peut pas décrypter ses propres hashs.
+
+Les JSON web tokens sont des tokens chiffrés qui peuvent être utilisés pour l'autorisation.
+
+    La méthode sign() du package jsonwebtoken utilise une clé secrète pour chiffrer un token qui peut contenir un payload personnalisé et avoir une validité limitée.
+
+La méthode verify() du package jsonwebtoken permet de vérifier la validité d'un token (sur une requête entrante, par exemple).
+
+    Ajoutez bien votre middleware d'authentification dans le bon ordre sur les bonnes routes.
+
+    Attention aux failles de sécurité !
+
+npm install multer
+
+    multer est un package de gestion de fichiers.
+
+     méthode diskStorage()  configure le chemin et le nom de fichier pour les fichiers entrants.
+
+    Sa méthode single()  crée un middleware qui capture les fichiers d'un certain type (passé en argument), et les enregistre au système de fichiers du serveur à l'aide du storage configuré.

@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const app = express();
 
@@ -15,6 +16,10 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 app.use(express.json());
+
+app.use("/images", express.static(path.join(__dirname, "images")));
+
+// Cela indique à Express qu'il faut gérer la ressource images de manière statique (un sous-répertoire de notre répertoire de base, __dirname) à chaque fois qu'elle reçoit une requête vers la route /images.
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
