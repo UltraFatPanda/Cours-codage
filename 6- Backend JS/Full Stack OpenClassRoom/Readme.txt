@@ -113,3 +113,10 @@ npm install multer
      méthode diskStorage()  configure le chemin et le nom de fichier pour les fichiers entrants.
 
     Sa méthode single()  crée un middleware qui capture les fichiers d'un certain type (passé en argument), et les enregistre au système de fichiers du serveur à l'aide du storage configuré.
+
+
+JSON.parse() transforme un objet stringifié en Object JavaScript exploitable.
+
+    Vous aurez besoin dereq.protocol  et de req.get('host'), connectés par  '://'  et suivis de req.file.filename, pour reconstruire l'URL complète du fichier enregistré.
+
+    Configurez votre serveur pour renvoyer des fichiers statiques pour une route donnée avec  express.static()  et  path.join().
